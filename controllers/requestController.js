@@ -8,3 +8,5 @@ const requestController = (req, res) => {
     },
   });
 };
+
+module.exports = requestController;
