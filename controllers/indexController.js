@@ -1,5 +1,7 @@
 const indexController = (req, res) => {
   res.json({
+    status: "success",
+    message: "Routes loaded successfully.",
     header: {
       logo_url: "",
       nav_links: [
