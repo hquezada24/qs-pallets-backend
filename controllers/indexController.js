@@ -2,15 +2,6 @@ const indexController = (req, res) => {
   res.json({
     status: "success",
     message: "Routes loaded successfully.",
-    header: {
-      logo_url: "",
-      nav_links: [
-        { text: "Products", url: "/products" },
-        { text: "Request a Quote", url: "/request-a-quote" },
-        { text: "Contact", url: "/contact" },
-        { text: "About Us", url: "/about" },
-      ],
-    },
     hero: {
       headline: "High-Quality Pallets for All Your Shipping Needs",
       sub_headline:
