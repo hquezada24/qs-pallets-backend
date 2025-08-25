@@ -1,36 +1,35 @@
-const { PrismaClient } = require("./generated/prisma");
 const crypto = require("crypto");
+const { PrismaClient } = require("./generated/prisma");
 
 const prisma = new PrismaClient();
 
 async function createQuoteWithDependencies(quoteData) {
   try {
-    const uuid = crypto.uuid();
     const newQuote = await prisma.quote.create({
       data: {
         // Quote fields
         palletType: quoteData.palletType,
         quantity: quoteData.quantity,
         additionalDetails: quoteData.additionalDetails,
-        requestId: uuid,
+        requestId: crypto.randomUUID(),
 
         // Nested create for the Customer
         customer: {
           create: {
-            fullName: quoteData.fullName,
-            companyName: quoteData.companyName,
-            email: quoteData.email,
-            phone: quoteData.phone,
+            fullName: quoteData.customer.fullName,
+            companyName: quoteData.customer.companyName,
+            email: quoteData.customer.email,
+            phone: quoteData.customer.phone,
           },
         },
 
         // Nested create for the Address
         address: {
           create: {
-            street: quoteData.street,
-            city: quoteData.city,
-            state: quoteData.state,
-            zipCode: quoteData.zipCode,
+            street: quoteData.address.street,
+            city: quoteData.address.city,
+            state: quoteData.address.state,
+            zipCode: quoteData.address.zipCode,
           },
         },
       },
@@ -47,3 +46,5 @@ async function createQuoteWithDependencies(quoteData) {
     throw error;
   }
 }
+
+module.exports = createQuoteWithDependencies;
