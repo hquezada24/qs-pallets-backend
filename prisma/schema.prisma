@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Quote {
+  id                Int        @id @default(autoincrement())
+  palletType        PalletType
+  quantity          Int
+  additionalDetails String?
+  createdAt         DateTime   @default(now())
+  status            String     @default("new")
+  requestId         String     @unique
+  customer          Customer   @relation(fields: [customerId], references: [id])
+  customerId        Int
+  address           Address    @relation(fields: [addressId], references: [id])
+  addressId         Int
+}
+
+enum PalletType {
+  NEW
+  RECYCLED
+  CUSTOM
+}
+
+model Customer {
+  id           Int      @id @default(autoincrement())
+  fullName     String
+  companyName  String?
+  email        String   @unique
+  phone        String
+  createdAt    DateTime @default(now())
+  quotes       Quote[]
+}
+
+model Address {
+  id        Int      @id @default(autoincrement())
+  street    String
+  city      String
+  state     String
+  zipCode   String
+  createdAt DateTime @default(now())
+  quotes    Quote[]
+}
