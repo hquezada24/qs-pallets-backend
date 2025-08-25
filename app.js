@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-// const path = require("node:path");
 const indexRoutes = require("./routes/indexRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const contactRoutes = require("./routes/contactRoutes");
@@ -15,7 +14,6 @@ app.use("/request-a-quote", requestRoutes);
 app.use("/contact", contactRoutes);
 app.use("/about", aboutRoutes);
 
-// Serve React app for all other files
 app.all(/.*/, (req, res) => {
   res.status(404).json({
     error: "API endpoint not found",
