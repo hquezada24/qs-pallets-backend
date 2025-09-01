@@ -2,11 +2,6 @@ const indexController = (req, res) => {
   res.json({
     status: "success",
     message: "Routes loaded successfully.",
-    hero: {
-      title: "High-Quality Pallets for All Your Shipping Needs",
-      description:
-        "We provide reliable pallet supply and custom solutions so you can focus on your business, not your logistics",
-    },
     features: {
       title: "Our Product Range",
       description:
@@ -50,11 +45,6 @@ const indexController = (req, res) => {
             "We build lasting relationships with our clients. Count on us for reliable service, clear communication, and expert support.",
         },
       ],
-    },
-    callToAction: {
-      title: "Ready to Get Started?",
-      description:
-        "Experience the QS Pallets difference. Get a custom quote tailored to your specific needs, or speak with our experts to find the perfect solution.",
     },
   });
 };
