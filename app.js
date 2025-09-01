@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const indexRoutes = require("./routes/indexRoutes");
+const productsRoutes = require("./routes/productRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
@@ -10,6 +11,7 @@ app.use(express.json());
 
 // API routes
 app.use("/", indexRoutes);
+app.use("/products", productsRoutes);
 app.use("/request-a-quote", requestRoutes);
 app.use("/contact", contactRoutes);
 app.use("/about", aboutRoutes);

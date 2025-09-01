@@ -3,11 +3,11 @@ const indexController = (req, res) => {
     status: "success",
     message: "Routes loaded successfully.",
     hero: {
-      headline: "High-Quality Pallets for All Your Shipping Needs",
-      sub_headline:
+      title: "High-Quality Pallets for All Your Shipping Needs",
+      description:
         "We provide reliable pallet supply and custom solutions so you can focus on your business, not your logistics",
     },
-    products: {
+    features: {
       title: "Our Product Range",
       description:
         "From standard shipping pallets to custom solutions, we have the right pallet for every application and budget.",
@@ -30,14 +30,10 @@ const indexController = (req, res) => {
       ],
     },
     whyChooseUs: {
-      headline: "Why Choose QS Pallets?",
-      text: "We're not just another pallet supplier. We're your logistics partner, committed to providing solutions that keep your business moving forward.",
+      title: "Why Choose QS Pallets?",
+      description:
+        "We're not just another pallet supplier. We're your logistics partner, committed to providing solutions that keep your business moving forward.",
       features: [
-        {
-          title: "Fast Turnaround",
-          description:
-            "Need pallets quickly? Our efficient production process and inventory management ensure fast delivery without compromising quality.",
-        },
         {
           title: "Custom Solutions",
           description:
