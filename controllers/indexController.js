@@ -5,43 +5,60 @@ const indexController = (req, res) => {
     hero: {
       headline: "High-Quality Pallets for All Your Shipping Needs",
       sub_headline:
-        "We provide new and recycled pallets in standard and custom sizes.",
-      image_url: "",
-      cta_text: "Request a Quote",
-      cta_url: "/request-a-quote",
+        "We provide reliable pallet supply and custom solutions so you can focus on your business, not your logistics",
     },
-    featured_products: [
-      {
-        name: "Standard Wood Pallet",
-        short_description:
-          "Our most popular new pallet, perfect for general shipping.",
-        image_url: "",
-        product_url: "",
-      },
-      {
-        name: "Recycled Heat-Treated Pallet",
-        short_description:
-          "Eco-friendly and ISPM 15 certified for international shipping.",
-        image_url: "",
-        product_url: "",
-      },
-    ],
-    services: [
-      {
-        title: "New Pallet Sales",
-        description: "Durable and reliable pallets for any industry.",
-        icon_url: "",
-      },
-      {
-        title: "Custom Solutions",
-        description: "Pallets built to your exact specifications.",
-        icon_url: "",
-      },
-    ],
-    contact: {
-      phone: "903-401-0536",
-      email: "info@qspallets.com",
-      address: "1415 FM 2216 Honey Grove, TX 75446",
+    products: {
+      title: "Our Product Range",
+      description:
+        "From standard shipping pallets to custom solutions, we have the right pallet for every application and budget.",
+      products: [
+        {
+          name: "Standard Pallets",
+          description:
+            "Premium quality pallets built from high-grade materials. Perfect for applications requiring maximum durability and consistency.",
+        },
+        {
+          name: "Recycled Pallets",
+          description:
+            "Cost-effective and environmentally responsible. Our recycled pallets are thoroughly inspected and refurbished to meet quality standards.",
+        },
+        {
+          name: "Custom Pallets",
+          description:
+            "Specialized solutions for unique requirements. Any size, any specification - we'll create the perfect pallet for your needs.",
+        },
+      ],
+    },
+    whyChooseUs: {
+      headline: "Why Choose QS Pallets?",
+      text: "We're not just another pallet supplier. We're your logistics partner, committed to providing solutions that keep your business moving forward.",
+      features: [
+        {
+          title: "Fast Turnaround",
+          description:
+            "Need pallets quickly? Our efficient production process and inventory management ensure fast delivery without compromising quality.",
+        },
+        {
+          title: "Custom Solutions",
+          description:
+            "Standard sizes not working? We create custom pallets tailored to your exact specifications, no matter how unique your requirements.",
+        },
+        {
+          title: "Competitive Pricing",
+          description:
+            "Get the best value for your investment. Our efficient operations allow us to offer competitive prices without sacrificing quality.",
+        },
+        {
+          title: "Trusted Partnership",
+          description:
+            "We build lasting relationships with our clients. Count on us for reliable service, clear communication, and expert support.",
+        },
+      ],
+    },
+    callToAction: {
+      title: "Ready to Get Started?",
+      description:
+        "Experience the QS Pallets difference. Get a custom quote tailored to your specific needs, or speak with our experts to find the perfect solution.",
     },
   });
 };

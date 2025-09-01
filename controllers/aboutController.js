@@ -8,7 +8,7 @@ const aboutController = (req, res) => {
         text: "At QS Pallets, we're more than just a pallet supplier; we're a partner in your business's supply chain. Our mission is to provide high-quality, reliable pallet solutions that help our clients ship their products safely and efficiently. We're committed to delivering exceptional products and service, ensuring your logistics run smoothly from start to finish.",
       },
       {
-        heading: "Our Team",
+        heading: "Our Story",
         text: "Hugo Quezada founded QS Pallets in 2019 with a simple goal: to offer better-quality pallets with a customer-first approach. We saw a need in the market for a supplier who was not only knowledgeable but also dedicated to building long-term relationships.",
       },
       {
