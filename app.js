@@ -4,7 +4,7 @@ const indexRoutes = require("./routes/indexRoutes");
 const productsRoutes = require("./routes/productRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const contactRoutes = require("./routes/contactRoutes");
-const aboutRoutes = require("./routes/aboutRoutes");
+// const aboutRoutes = require("./routes/aboutRoutes");
 
 // Parse JSON for API requests
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use("/", indexRoutes);
 app.use("/products", productsRoutes);
 app.use("/request-a-quote", requestRoutes);
 app.use("/contact", contactRoutes);
-app.use("/about", aboutRoutes);
+// app.use("/about", aboutRoutes);
 
 app.all(/.*/, (req, res) => {
   res.status(404).json({
