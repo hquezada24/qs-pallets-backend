@@ -1,8 +1,8 @@
-const createQuoteWithDependencies = require("../db");
+const createQuoteWithValidation = require("../db");
 
 const requestController = async (req, res) => {
   try {
-    const quote = await createQuoteWithDependencies(req.body);
+    const quote = await createQuoteWithValidation(req.body);
 
     if (!quote) {
       res.status(400).json({
