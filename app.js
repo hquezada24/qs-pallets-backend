@@ -5,6 +5,7 @@ const productsRoutes = require("./routes/productRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const cors = require("cors");
+require("dotenv").config();
 // const aboutRoutes = require("./routes/aboutRoutes");
 
 // Parse JSON for API requests

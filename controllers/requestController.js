@@ -1,11 +1,11 @@
-const createQuoteWithValidation = require("../db");
+const { createQuoteWithValidation } = require("../db");
 
 const requestController = async (req, res) => {
   try {
     const quote = await createQuoteWithValidation(req.body);
 
     if (!quote) {
-      res.status(400).json({
+      return res.status(400).json({
         status: "failed",
         message: "Your quote could not be stored correctly",
       });
@@ -19,9 +19,11 @@ const requestController = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(404).json({
+    console.error("Quote creation error:", error);
+    res.status(500).json({
       success: false,
       message: "Internal server error.",
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
     });
   }
 };

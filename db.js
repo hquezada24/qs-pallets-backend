@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 
 // Helper function to find or create customer
 async function findOrCreateCustomer(customerData, tx = prisma) {
+  console.log(customerData);
   try {
     // Check for existing customer by email
     let customer = await tx.customer.findUnique({
@@ -83,7 +84,7 @@ async function createQuote(quoteData, customerId, addressId, tx = prisma) {
     const quote = await tx.quote.create({
       data: {
         palletType: quoteData.palletType,
-        quantity: quoteData.quantity,
+        quantity: parseInt(quoteData.quantity, 10),
         additionalDetails: quoteData.additionalDetails,
         requestId: crypto.randomUUID(),
         customerId: customerId,
@@ -106,7 +107,7 @@ async function createQuoteWithDependencies(quoteData) {
   try {
     return await prisma.$transaction(async (tx) => {
       // Step 1: Handle customer
-      const customer = await findOrCreateCustomer(quoteData.customer, tx);
+      const customer = await findOrCreateCustomer(quoteData, tx);
 
       // Step 2: Handle address
       const address = await findOrCreateAddress(quoteData.address, tx);
@@ -122,7 +123,7 @@ async function createQuoteWithDependencies(quoteData) {
   }
 }
 
-// Alternative: Individual functions for specific use cases
+// Individual functions for specific use cases
 async function findExistingCustomer(email) {
   try {
     return await prisma.customer.findUnique({
@@ -157,8 +158,8 @@ function validateQuoteData(quoteData) {
   if (!quoteData.palletType) errors.push("Pallet type is required");
   if (!quoteData.quantity || quoteData.quantity <= 0)
     errors.push("Valid quantity is required");
-  if (!quoteData.customer?.email) errors.push("Customer email is required");
-  if (!quoteData.customer?.fullName) errors.push("Customer name is required");
+  if (!quoteData.email) errors.push("Customer email is required");
+  if (!quoteData.fullName) errors.push("Customer name is required");
   if (!quoteData.address?.street) errors.push("Address street is required");
   if (!quoteData.address?.city) errors.push("Address city is required");
 
