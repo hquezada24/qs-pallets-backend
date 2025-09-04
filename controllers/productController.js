@@ -65,18 +65,13 @@ const productController = (req, res) => {
         "Custom Pallets",
       ],
       rows: [
-        {
-          specification: "Standard Sizes",
-          newPallets: '48"×40", 42"×42", 48"×48"',
-          recycledPallets: "Various standard sizes",
-          customPallets: "Any dimension",
-        },
-        {
-          specification: "Lead Time",
-          newPallets: "5-10 business days",
-          recycledPallets: "Same day - 3 days",
-          customPallets: "2-4 weeks",
-        },
+        [
+          "Standard Sizes",
+          '48"×40", 42"×42", 48"×48"',
+          "Various standard sizes",
+          "Any dimension",
+        ],
+        ["Lead Time", "5-10 business days", "Same day - 3 days", "2-4 weeks"],
       ],
     },
   });
