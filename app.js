@@ -29,7 +29,6 @@ app.use("/", indexRoutes);
 app.use("/products", productsRoutes);
 app.use("/", requestRoutes);
 app.use("/contact", contactRoutes);
-// app.use("/about", aboutRoutes);
 
 app.all(/.*/, (req, res) => {
   res.status(404).json({

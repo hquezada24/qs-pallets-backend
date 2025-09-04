@@ -8,16 +8,19 @@ const indexController = (req, res) => {
         "From standard shipping pallets to custom solutions, we have the right pallet for every application and budget.",
       products: [
         {
+          icon: "🆕",
           name: "Standard Pallets",
           description:
             "Premium quality pallets built from high-grade materials. Perfect for applications requiring maximum durability and consistency.",
         },
         {
+          icon: "♻️",
           name: "Recycled Pallets",
           description:
             "Cost-effective and environmentally responsible. Our recycled pallets are thoroughly inspected and refurbished to meet quality standards.",
         },
         {
+          icon: "🔧",
           name: "Custom Pallets",
           description:
             "Specialized solutions for unique requirements. Any size, any specification - we'll create the perfect pallet for your needs.",
