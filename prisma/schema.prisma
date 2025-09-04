@@ -52,4 +52,5 @@ model Address {
   zipCode   String
   createdAt DateTime @default(now())
   quotes    Quote[]
+  @@index([street, city, state, zipCode])
 }

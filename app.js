@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const indexRoutes = require("./routes/indexRoutes");
-const productsRoutes = require("./routes/productRoutes");
-const requestRoutes = require("./routes/requestRoutes");
-const contactRoutes = require("./routes/contactRoutes");
+// const indexRoutes = require("./routes/indexRoutes");
+// const productsRoutes = require("./routes/productRoutes");
+// const requestRoutes = require("./routes/requestRoutes");
+// const contactRoutes = require("./routes/contactRoutes");
 const cors = require("cors");
 require("dotenv").config();
 // const aboutRoutes = require("./routes/aboutRoutes");
@@ -11,22 +11,20 @@ require("dotenv").config();
 // Parse JSON for API requests
 app.use(express.json());
 
-// Use the cors middleware
-app.use(cors());
-
 const corsOptions = {
   origin: "http://localhost:5173", // or whatever your React app's port is
   optionsSuccessStatus: 200, // For legacy browser support
 };
 
+// Use the cors middleware
 app.use(cors(corsOptions));
 
 // API routes
-app.use("/", indexRoutes);
-app.use("/products", productsRoutes);
-app.use("/request-a-quote", requestRoutes);
-app.use("/", requestRoutes);
-app.use("/contact", contactRoutes);
+// app.use("/", indexRoutes);
+// app.use("/products", productsRoutes);
+// app.use("/request-a-quote", requestRoutes);
+// app.use("/", requestRoutes);
+// app.use("/contact", contactRoutes);
 // app.use("/about", aboutRoutes);
 
 app.all(/.*/, (req, res) => {
