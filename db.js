@@ -3,17 +3,6 @@ const { PrismaClient } = require("./generated/prisma");
 
 const prisma = new PrismaClient();
 
-// Test DB connection on startup
-prisma
-  .$connect()
-  .then(() => {
-    console.log("Database connected successfully");
-    // Test a simple query
-    return prisma.$queryRaw`SELECT 1`;
-  })
-  .then(() => console.log("Database query test passed"))
-  .catch((err) => console.error("Database connection failed:", err));
-
 // Helper function to find or create customer
 async function findOrCreateCustomer(customerData, tx = prisma) {
   console.log(customerData);
