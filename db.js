@@ -5,6 +5,8 @@ const prisma = new PrismaClient();
 
 // Helper function to find or create customer
 async function findOrCreateCustomer(customerData, tx = prisma) {
+  console.log("Received request body:", JSON.stringify(req.body, null, 2));
+
   console.log(customerData);
   try {
     // Check for existing customer by email

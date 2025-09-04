@@ -27,7 +27,6 @@ app.use(cors(corsOptions));
 // API routes
 app.use("/", indexRoutes);
 app.use("/products", productsRoutes);
-app.use("/request-a-quote", requestRoutes);
 app.use("/", requestRoutes);
 app.use("/contact", contactRoutes);
 // app.use("/about", aboutRoutes);
