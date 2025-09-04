@@ -35,13 +35,14 @@ enum PalletType {
 }
 
 model Customer {
-  id           Int      @id @default(autoincrement())
-  fullName     String
-  companyName  String?
-  email        String   @unique
-  phone        String
-  createdAt    DateTime @default(now())
-  quotes       Quote[]
+  id          Int        @id @default(autoincrement())
+  fullName    String
+  companyName String?
+  email       String     @unique
+  phone       String
+  createdAt   DateTime   @default(now())
+  quotes      Quote[]
+  messages    messages[]
 }
 
 model Address {
@@ -52,5 +53,14 @@ model Address {
   zipCode   String
   createdAt DateTime @default(now())
   quotes    Quote[]
+
   @@index([street, city, state, zipCode])
+}
+
+model messages {
+  id       Int      @id @default(autoincrement())
+  subject  String
+  message  String
+  author   Customer @relation(fields: [authorId], references: [id])
+  authorId Int
 }
