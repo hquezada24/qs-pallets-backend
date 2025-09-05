@@ -14,7 +14,7 @@ const getContact = (req, res) => {
       },
       phone: {
         display: "(903) 401-0536",
-        href: "+19034010536",
+        href: "tel:+19034010536",
       },
       email: {
         display: "info@qspallets.com",
