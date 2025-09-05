@@ -28,7 +28,7 @@ app.use(cors(corsOptions));
 app.use("/", indexRoutes);
 app.use("/products", productsRoutes);
 app.use("/", requestRoutes);
-app.use("/contact", contactRoutes);
+app.use("/", contactRoutes);
 
 app.all(/.*/, (req, res) => {
   res.status(404).json({

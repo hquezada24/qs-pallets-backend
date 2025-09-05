@@ -5,8 +5,6 @@ const prisma = new PrismaClient();
 
 // Helper function to find or create customer
 async function findOrCreateCustomer(customerData, tx = prisma) {
-  console.log("Received request body:", JSON.stringify(req.body, null, 2));
-
   console.log(customerData);
   try {
     // Check for existing customer by email
@@ -109,6 +107,7 @@ async function createMessage(data, authorId, tx = prisma) {
   try {
     const message = await tx.messages.create({
       data: {
+        messageId: crypto.randomUUID(),
         subject: data.subject,
         message: data.message,
         employee_email: process.env.CONTACT_EMAIL,
@@ -151,10 +150,10 @@ async function createMessageWithDependencies(data) {
   try {
     return await prisma.$transaction(async (tx) => {
       // Step 1: Handle customer
-      const customer = findOrCreateCustomer(data, tx);
+      const customer = await findOrCreateCustomer(data, tx);
 
       // Step 2: Handle message
-      const message = createMessage(data, customer.id, tx);
+      const message = await createMessage(data, customer.id, tx);
 
       return message;
     });
