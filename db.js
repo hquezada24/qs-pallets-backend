@@ -104,6 +104,27 @@ async function createQuote(quoteData, customerId, addressId, tx = prisma) {
   }
 }
 
+// Helper function to create a message
+async function createMessage(data, authorId, tx = prisma) {
+  try {
+    const message = await tx.messages.create({
+      data: {
+        subject: data.subject,
+        message: data.message,
+        employee_email: process.env.CONTACT_EMAIL,
+        authorId: authorId,
+      },
+      include: {
+        author: true,
+      },
+    });
+
+    return message;
+  } catch (error) {
+    throw new Error(`Failed to create message: ${error.message}`);
+  }
+}
+
 // Main orchestrator function using transaction
 async function createQuoteWithDependencies(quoteData) {
   try {
@@ -121,6 +142,24 @@ async function createQuoteWithDependencies(quoteData) {
     });
   } catch (error) {
     console.error("Failed to create quote with dependencies:", error);
+    throw error;
+  }
+}
+
+// Main orchestrator function using transaction
+async function createMessageWithDependencies(data) {
+  try {
+    return await prisma.$transaction(async (tx) => {
+      // Step 1: Handle customer
+      const customer = findOrCreateCustomer(data, tx);
+
+      // Step 2: Handle message
+      const message = createMessage(data, customer.id, tx);
+
+      return message;
+    });
+  } catch (error) {
+    console.error("Failed to create message with dependencies:", error);
     throw error;
   }
 }
@@ -170,6 +209,19 @@ function validateQuoteData(quoteData) {
   }
 }
 
+function validateMessageData(data) {
+  const errors = [];
+  if (!data.fullName) errors.push("Customer name is required");
+  if (!data.email) errors.push("Customer email is required");
+  if (!data.phone) errors.push("Customer email is required");
+  if (!data.subject) errors.push("Customer subject is required");
+  if (!data.message) errors.push("Customer message is required");
+
+  if (errors.length > 0) {
+    throw new Error(`Validation failed: ${errors.join(", ")}`);
+  }
+}
+
 // Main function with validation
 async function createQuoteWithValidation(quoteData) {
   try {
@@ -184,13 +236,30 @@ async function createQuoteWithValidation(quoteData) {
   }
 }
 
+// create message with validation
+
+async function createMessageWithValidation(data) {
+  try {
+    // Validate input first
+    validateMessageData(data);
+
+    // create message with dependencies
+    return await createMessageWithDependencies(data);
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createQuoteWithDependencies,
+  createMessageWithDependencies,
   findOrCreateCustomer,
   findOrCreateAddress,
   createQuote,
+  createMessage,
   findExistingCustomer,
   findExistingAddress,
   validateQuoteData,
   createQuoteWithValidation,
+  createMessageWithValidation,
 };

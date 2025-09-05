@@ -42,7 +42,7 @@ model Customer {
   phone       String
   createdAt   DateTime   @default(now())
   quotes      Quote[]
-  messages    messages[]
+  messages    Messages[]
 }
 
 model Address {
@@ -57,10 +57,17 @@ model Address {
   @@index([street, city, state, zipCode])
 }
 
-model messages {
-  id       Int      @id @default(autoincrement())
-  subject  String
-  message  String
-  author   Customer @relation(fields: [authorId], references: [id])
-  authorId Int
+model Messages {
+  id             Int      @id @default(autoincrement())
+  subject        String
+  message        String
+  employee_email String
+  status         Status   @default(PENDING)
+  author         Customer @relation(fields: [authorId], references: [id])
+  authorId       Int
+}
+
+enum Status {
+  PENDING
+  SENT
 }
