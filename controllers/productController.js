@@ -6,6 +6,11 @@ const productController = (req, res) => {
       {
         name: "Standard Pallets",
         price: 10,
+        imageURL: [
+          "/images/pallet1.jpeg",
+          "/images/pallet2.jpeg",
+          "/images/pallet3.jpeg",
+        ],
         description:
           "Our new pallets are crafted from high-grade materials with precision manufacturing processes. Built to withstand heavy loads and repeated use, these pallets offer maximum durability and reliability for your shipping needs.",
         key_features: [
