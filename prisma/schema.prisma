@@ -29,7 +29,7 @@ model Quote {
 }
 
 enum PalletType {
-  NEW
+  STANDARD
   RECYCLED
   CUSTOM
 }
@@ -42,7 +42,7 @@ model Customer {
   phone       String
   createdAt   DateTime   @default(now())
   quotes      Quote[]
-  messages    Messages[]
+  messages    Message[]
 }
 
 model Address {
@@ -57,7 +57,7 @@ model Address {
   @@index([street, city, state, zipCode])
 }
 
-model Messages {
+model Message {
   id             Int      @id @default(autoincrement())
   messageId      String   @unique
   subject        String
