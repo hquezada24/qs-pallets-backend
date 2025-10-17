@@ -17,7 +17,7 @@ require("dotenv").config();
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://qspallets.netlify.app/products", // or whatever your React app's port is
+  origin: "https://qspallets.netlify.app", // or whatever your React app's port is
   optionsSuccessStatus: 200, // For legacy browser support
 };
 
