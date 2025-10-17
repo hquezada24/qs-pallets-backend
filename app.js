@@ -16,9 +16,20 @@ require("dotenv").config();
 // Parse JSON for API requests
 app.use(express.json());
 
+const allowedOrigins = [
+  "https://qspallets.netlify.app",
+  "http://localhost:5173",
+];
+
 const corsOptions = {
-  origin: "https://qspallets.netlify.app", // or whatever your React app's port is
-  optionsSuccessStatus: 200, // For legacy browser support
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
 };
 
 // Use the cors middleware
