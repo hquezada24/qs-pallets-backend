@@ -26,7 +26,7 @@ It is built with **Express.js** and **Prisma ORM**, using **PostgreSQL** as the 
 
    ```bash
    git clone https://github.com/hquezada24/qs-pallets-backend.git
-   cd libraea
+   cd qs-pallets-backend
    ```
 
 1. Install dependencies:
