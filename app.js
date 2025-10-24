@@ -18,8 +18,8 @@ app.use(express.json());
 
 const allowedOrigins = [
   "https://qspallets.netlify.app",
-  "https://qspallets.com/",
-  "https://www.qspallets.com/",
+  "https://qspallets.com",
+  "https://www.qspallets.com",
   "http://localhost:5173",
 ];
 
