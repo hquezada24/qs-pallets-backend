@@ -5,7 +5,7 @@ const productController = (req, res) => {
     products: [
       {
         name: "Standard Pallets",
-        price: 10,
+        price: 11,
         imageURL: [
           "/images/pallet1.jpeg",
           "/images/pallet2.jpeg",
